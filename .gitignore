@@ -7,4 +7,5 @@ jspm_packages
 
 # local stuff
 .DS_Store
-.idea/
+.idea
+.dynamodb

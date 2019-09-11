@@ -4,7 +4,7 @@ const dynamodb = require('./dynamodb');
 
 module.exports.list = (event, context, callback) => {
   const params = {
-    TableName: process.env.DYNAMODB_TABLE,
+    TableName: 'todos',
   };
 
   // fetch all todos from the database

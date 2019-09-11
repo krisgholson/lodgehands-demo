@@ -2,8 +2,11 @@
   "name": "lodgehands-demo",
   "description": "",
   "version": "0.1.0",
-  "dependencies": {},
+  "dependencies": {
+    "uuid": "^3.3.3"
+  },
   "devDependencies": {
+    "aws-sdk": "^2.526.0",
     "serverless": "^1.51.0",
     "serverless-dynamodb-local": "^0.2.38",
     "serverless-offline": "^5.10.1"
