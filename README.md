@@ -13,6 +13,7 @@ npm install --save uuid
 npm install --save-dev aws-sdk
 
 # copy in configuration/resources from https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb-and-offline
+# to enable the todos handlers and the serverless-offline to work
 
 npm install
 serverless dynamodb install
@@ -76,3 +77,10 @@ Example Result:
 ```bash
 # Replace the <id> part with a real id from your todos table
 curl -X DELETE -H "Content-Type:application/json" http://localhost:3000/todos/<id>
+```
+
+## Testing
+https://serverless.com/blog/unit-testing-nodejs-serverless-jest/
+https://serverless.com/blog/how-test-serverless-applications/
+
+
