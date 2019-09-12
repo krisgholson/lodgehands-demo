@@ -4,6 +4,15 @@ plugins:
   - serverless-dynamodb-local
   - serverless-offline
 
+package:
+  exclude:
+    - package.json
+    - package-lock.json
+    - README.md
+    - .dynamodb/**
+    - .idea/**
+    - .git/**
+
 custom:
   dynamodb:
     stages:
@@ -84,4 +93,7 @@ resources:
         KeySchema:
           - AttributeName: id
             KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
