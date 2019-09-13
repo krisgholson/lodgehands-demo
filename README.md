@@ -1,25 +1,50 @@
+# Build a RESTful web service using AWS Lambda, DynamoDB, and the serverless framework
+
+Presented at Lodge Hands September 2019
+
 Based on the example project from serverless here:
 https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb-and-offline
 
+Prerequisites:
+* AWS cli and configuration with key/secret (if actually deploying to an AWS environment)
+* Node.js
+* serverless framework `npm install -g serverless`
+
+Steps used to initially create this project (not necessary if you just want to check it out and run it):
+
+Created the project from scratch using serverless cli (`serverless` or `sls`)
 
 ```bash
 sls create --template aws-nodejs --path lodgehands-demo --name lodgehands-demo
 cd lodgehands-demo
 
-serverless plugin install --name serverless-dynamodb-local
-serverless plugin install --name serverless-offline
+sls plugin install --name serverless-dynamodb-local
+sls plugin install --name serverless-offline
 
 npm install --save uuid
 npm install --save-dev aws-sdk
+```
 
-# copy in configuration/resources from https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb-and-offline
-# to enable the todos handlers and the serverless-offline to work
+Copy in configuration/resources from https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb-and-offline to enable the todos handlers and the serverless-offline to work (needs the addition of configuration that is NOT in the examples project) ..
 
+```yaml
+    stages:
+      - local
+```
+
+Once you check out the source and you want to run the demo (locally), then use:
+
+```bash
 npm install
-serverless dynamodb install
-serverless offline start --stage local
-serverless dynamodb migrate --stage local
+sls dynamodb install
+sls offline start --stage local
+sls dynamodb migrate --stage local
+```
 
+If you want to deploy to an AWS environment, then use:
+
+```bash
+sls deploy
 ```
 
 ## Usage
@@ -78,9 +103,3 @@ Example Result:
 # Replace the <id> part with a real id from your todos table
 curl -X DELETE -H "Content-Type:application/json" http://localhost:3000/todos/<id>
 ```
-
-## Testing
-https://serverless.com/blog/unit-testing-nodejs-serverless-jest/
-https://serverless.com/blog/how-test-serverless-applications/
-
-
